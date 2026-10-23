@@ -1,0 +1,23 @@
+# Editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Node (for the planned backend)
+node_modules/
+.env
+.env.local
+
+# Build output
+dist/
+build/
+
+# Large media — keep demo clips out of the repo
+*.mp4
+*.mov
+*.avi

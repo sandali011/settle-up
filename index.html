@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Settle Up — Group Expense Splitter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <div class="brand">
+      <div class="brand__mark" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </div>
+      <div class="brand__text">
+        <h1>Settle Up</h1>
+        <p>Split group expenses, settle in the fewest payments</p>
+      </div>
+    </div>
+
+    <div class="pot">
+      <span class="pot__label">Total spent</span>
+      <strong class="pot__value" id="potValue">Rs. 0.00</strong>
+      <span class="pot__sub" id="potSub">No expenses yet</span>
+    </div>
+  </div>
+</header>
+
+<main class="layout">
+
+  <!-- ============ PEOPLE ============ -->
+  <section class="panel panel--people">
+    <div class="panel__head">
+      <h2>People</h2>
+      <span class="badge" id="peopleCount">0</span>
+    </div>
+
+    <form class="row-form" id="personForm" autocomplete="off">
+      <input type="text" id="personName" class="field" placeholder="Add a name" maxlength="20" aria-label="Person's name">
+      <button type="submit" class="btn btn--icon" aria-label="Add person">+</button>
+    </form>
+
+    <ul class="people-list" id="peopleList"></ul>
+
+    <p class="empty" id="peopleEmpty">Add everyone in the group first. Two people minimum.</p>
+  </section>
+
+  <!-- ============ ADD EXPENSE ============ -->
+  <section class="panel panel--expense">
+    <div class="panel__head">
+      <h2>Log an expense</h2>
+    </div>
+
+    <form id="expenseForm" autocomplete="off">
+      <div class="grid-2">
+        <label class="lbl">
+          <span>What was it for</span>
+          <input type="text" id="expDesc" class="field" placeholder="Hotel, dinner, fuel…" maxlength="40">
+        </label>
+
+        <label class="lbl">
+          <span>Total amount</span>
+          <div class="money-input">
+            <span class="money-input__prefix">Rs.</span>
+            <input type="number" id="expAmount" class="field field--mono" placeholder="0.00" min="0.01" step="0.01">
+          </div>
+        </label>
+      </div>
+
+      <!-- ---- Who paid: one person, or several ---- -->
+      <div class="lbl">
+        <span class="split-head">
+          Who paid
+          <span class="seg" role="group" aria-label="Payment mode">
+            <button type="button" class="seg__btn is-active" data-paymode="single">One person</button>
+            <button type="button" class="seg__btn" data-paymode="multi">Several people</button>
+          </span>
+        </span>
+
+        <select id="expPaidBy" class="field">
+          <option value="">Select a person</option>
+        </select>
+
+        <div class="payers-box is-hidden" id="payersBox"></div>
+        <div class="tally is-hidden" id="payersTally"></div>
+      </div>
+
+      <!-- ---- Who shares the cost ---- -->
+      <div class="lbl">
+        <span class="split-head">
+          Split between
+          <span class="split-actions">
+            <button type="button" class="link-btn" id="selectAll">All</button>
+            <button type="button" class="link-btn" id="clearAll">None</button>
+          </span>
+        </span>
+        <div class="split-box" id="splitBox">
+          <p class="empty empty--inline">Add people to choose who shares this cost.</p>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--block">Add expense</button>
+    </form>
+  </section>
+
+ <!-- ============ BALANCES ============ -->
+
+  <section class="panel panel--balances">
+    <div class="panel__head">
+      <h2>Balances</h2>
+      <span class="hint">net position per person</span>
+    </div>
+    <ul class="balance-list" id="balanceList"></ul>
+    <p class="empty" id="balanceEmpty">Balances appear once you log an expense.</p>
+  </section>
+
+  <!-- ============ SETTLEMENTS ============ -->
+  <section class="panel panel--settle">
+    <div class="panel__head">
+      <h2>Settlement plan</h2>
+      <span class="badge badge--amber" id="settleCount">0 payments</span>
+    </div>
+
+    <div class="settle-list" id="settleList"></div>
+
+    <p class="empty" id="settleEmpty">
+      Once there's something to settle, you'll see the shortest way to square up here.
+    </p>
+  </section>
+
+  <!-- ============ HISTORY ============ -->
+  <section class="panel panel--history">
+    <div class="panel__head">
+      <h2>Activity</h2>
+      <button type="button" class="link-btn link-btn--danger" id="resetBtn">Reset everything</button>
+    </div>
+
+    <div class="table-wrap">
+      <table class="history" id="historyTable">
+        <thead>
+          <tr>
+            <th>Entry</th>
+            <th>Paid by</th>
+            <th>Split between</th>
+            <th class="ta-r">Amount</th>
+            <th class="ta-r">Per head</th>
+            <th aria-label="Actions"></th>
+          </tr>
+        </thead>
+        <tbody id="historyBody"></tbody>
+      </table>
+    </div>
+
+    <p class="empty" id="historyEmpty">
+      Nothing logged yet.
+      <button type="button" class="link-btn" id="demoBtn">Load sample data</button>
+      to see how it works.
+    </p>
+  </section>
+
+</main>
+
+<div class="toast-stack" id="toastStack" role="status" aria-live="polite"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

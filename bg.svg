@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="glowA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFC24B" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#FFC24B" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4FE3A5" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#4FE3A5" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowC" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7B6BFF" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7B6BFF" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="soften" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+
+    <pattern id="dots" width="38" height="38" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#B6BBE8" fill-opacity="0.32"/>
+    </pattern>
+  </defs>
+
+  <rect width="1600" height="1000" fill="#0B0E26"/>
+
+  <!-- Soft colour wash behind everything -->
+  <g filter="url(#soften)">
+    <circle cx="200"  cy="120" r="330" fill="url(#glowA)"/>
+    <circle cx="1440" cy="220" r="360" fill="url(#glowB)"/>
+    <circle cx="800"  cy="1020" r="430" fill="url(#glowC)"/>
+  </g>
+
+  <rect width="1600" height="1000" fill="url(#dots)"/>
+
+  <!-- ============ Line-art objects ============
+       Thin strokes only, so text stays readable on top. -->
+  <g fill="none" stroke="#DCE0FF" stroke-opacity="0.5"
+     stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+
+    <!-- Coin stack, left -->
+    <g transform="translate(150 690)">
+      <ellipse cx="0" cy="96" rx="62" ry="19"/>
+      <path d="M-62 96v-22M62 96v-22"/>
+      <ellipse cx="0" cy="74" rx="62" ry="19"/>
+      <path d="M-62 74v-22M62 74v-22"/>
+      <ellipse cx="0" cy="52" rx="62" ry="19"/>
+      <path d="M-62 52v-22M62 52v-22"/>
+      <ellipse cx="0" cy="30" rx="62" ry="19"/>
+      <path d="M-62 30v-22M62 30v-22"/>
+      <ellipse cx="0" cy="8" rx="62" ry="19"/>
+      <ellipse cx="0" cy="8" rx="34" ry="10" stroke-opacity="0.3"/>
+    </g>
+
+    <!-- Smaller coin stack -->
+    <g transform="translate(300 800)">
+      <ellipse cx="0" cy="52" rx="44" ry="14"/>
+      <path d="M-44 52v-18M44 52v-18"/>
+      <ellipse cx="0" cy="34" rx="44" ry="14"/>
+      <path d="M-44 34v-18M44 34v-18"/>
+      <ellipse cx="0" cy="16" rx="44" ry="14"/>
+    </g>
+
+    <!-- Receipt, curling, top left -->
+    <g transform="translate(400 130) rotate(-8)">
+      <path d="M0 0h180v300l-22-16-22 16-22-16-22 16-23-16-22 16-22-16-25 16z"/>
+      <path d="M26 46h128M26 78h128M26 110h96M26 142h128M26 174h72" stroke-opacity="0.34"/>
+      <path d="M26 220h128M26 250h84" stroke-opacity="0.34"/>
+    </g>
+
+    <!-- Long receipt roll, right -->
+    <g transform="translate(1330 130) rotate(7)">
+      <path d="M0 0h150v250l-19-14-19 14-18-14-19 14-19-14-18 14-19-14-19 14z"/>
+      <path d="M22 40h106M22 70h106M22 100h74M22 130h106" stroke-opacity="0.34"/>
+      <ellipse cx="75" cy="-30" rx="75" ry="30"/>
+      <path d="M0 0v-30M150 0v-30"/>
+    </g>
+
+    <!-- Calculator, bottom right -->
+    <g transform="translate(1180 600) rotate(-6)">
+      <rect x="0" y="0" width="240" height="330" rx="22"/>
+      <rect x="24" y="26" width="192" height="58" rx="9"/>
+      <path d="M40 62h150" stroke-opacity="0.34"/>
+      <g stroke-opacity="0.42">
+        <rect x="24"  y="106" width="42" height="34" rx="8"/>
+        <rect x="74"  y="106" width="42" height="34" rx="8"/>
+        <rect x="124" y="106" width="42" height="34" rx="8"/>
+        <rect x="174" y="106" width="42" height="34" rx="8"/>
+        <rect x="24"  y="152" width="42" height="34" rx="8"/>
+        <rect x="74"  y="152" width="42" height="34" rx="8"/>
+        <rect x="124" y="152" width="42" height="34" rx="8"/>
+        <rect x="174" y="152" width="42" height="34" rx="8"/>
+        <rect x="24"  y="198" width="42" height="34" rx="8"/>
+        <rect x="74"  y="198" width="42" height="34" rx="8"/>
+        <rect x="124" y="198" width="42" height="34" rx="8"/>
+        <rect x="174" y="198" width="42" height="80" rx="8"/>
+        <rect x="24"  y="244" width="92" height="34" rx="8"/>
+        <rect x="124" y="244" width="42" height="34" rx="8"/>
+      </g>
+    </g>
+
+    <!-- Bar chart, bottom centre -->
+    <g transform="translate(700 720)">
+      <path d="M0 0v210h250" stroke-opacity="0.4"/>
+      <rect x="30"  y="120" width="38" height="90"/>
+      <rect x="86"  y="70"  width="38" height="140"/>
+      <rect x="142" y="140" width="38" height="70"/>
+      <rect x="198" y="34"  width="38" height="176"/>
+      <path d="M30 96l56-40 56 44 56-52" stroke-opacity="0.3"/>
+    </g>
+
+    <!-- Donut chart, top centre-right -->
+    <g transform="translate(1090 200)">
+      <circle cx="0" cy="0" r="86"/>
+      <circle cx="0" cy="0" r="44" stroke-opacity="0.34"/>
+      <path d="M0-86A86 86 0 0 1 74 43" stroke-width="3.4"/>
+      <path d="M0-44v-42M74 43l36 21" stroke-opacity="0.3"/>
+    </g>
+
+    <!-- Magnifying glass over a document -->
+    <g transform="translate(560 470) rotate(-10)">
+      <rect x="0" y="0" width="150" height="196" rx="8"/>
+      <path d="M22 38h106M22 66h106M22 94h72M22 122h106" stroke-opacity="0.32"/>
+      <circle cx="132" cy="150" r="52"/>
+      <path d="M170 188l40 40" stroke-width="6"/>
+      <path d="M110 138h44M110 160h30" stroke-opacity="0.34"/>
+    </g>
+
+    <!-- Banknote -->
+    <g transform="translate(1400 830) rotate(-9)">
+      <rect x="0" y="0" width="190" height="98" rx="10"/>
+      <circle cx="95" cy="49" r="26"/>
+      <path d="M22 22h20M148 76h20" stroke-opacity="0.34"/>
+      <path d="M95 34v30M86 40h14a7 7 0 0 1 0 14h-12" stroke-opacity="0.5"/>
+    </g>
+
+    <!-- Calendar -->
+    <g transform="translate(120 190) rotate(6)">
+      <rect x="0" y="14" width="168" height="150" rx="10"/>
+      <path d="M0 54h168" stroke-opacity="0.4"/>
+      <path d="M42 14V0M126 14V0"/>
+      <g stroke-opacity="0.3">
+        <path d="M28 78h16M70 78h16M112 78h16M28 106h16M70 106h16M112 106h16M28 134h16M70 134h16"/>
+      </g>
+    </g>
+
+    <!-- Split arrows: one amount branching to three people -->
+    <g transform="translate(830 330)" stroke-opacity="0.4">
+      <circle cx="0" cy="0" r="24"/>
+      <path d="M24 0h60M84 0v-70h56M84 0v70h56M84 0h56"/>
+      <circle cx="156" cy="-70" r="14"/>
+      <circle cx="156" cy="0" r="14"/>
+      <circle cx="156" cy="70" r="14"/>
+    </g>
+  </g>
+
+  <!-- Currency marks, a touch of colour -->
+  <g font-family="Georgia, serif" font-weight="700" fill-opacity="0.34">
+    <text x="270" y="450" font-size="62" fill="#FFC24B" transform="rotate(-12 270 450)">₨</text>
+    <text x="1490" y="480" font-size="52" fill="#4FE3A5" transform="rotate(10 1490 480)">₨</text>
+    <text x="640" y="880" font-size="44" fill="#7B6BFF" transform="rotate(-6 640 880)">₨</text>
+    <text x="1010" y="620" font-size="38" fill="#FF7E6E" transform="rotate(14 1010 620)">₨</text>
+  </g>
+</svg>
